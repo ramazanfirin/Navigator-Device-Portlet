@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="com.mobilekipyonetim.service">
+	<author>002834</author>
+	<namespace>mobilekipyonetim</namespace>
+
+	<entity name="Device" local-service="true" remote-service="false" table="device" >
+
+		<!-- PK fields -->
+
+		<column name="entityId" type="int" primary="true" id-type="increment"/>
+
+		<!-- Group instance -->
+
+		
+
+		<!-- Audit fields -->
+        <column name="groupId" type="long" />
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="msisdn" type="String" />
+		<column name="imei" type="String" />
+		<column name="regId" type="String" />
+		<column name="organizationId" type="long" />
+		<!-- Order -->
+
+<!-- 		<column name="vehicle" type="Collection" entity="Vehicle" mapping-table="Vehicle"/> -->
+
+		<order by="asc">
+			<order-column name="imei" />
+		</order>
+
+		<!-- Finder methods -->
+
+<!-- 		<finder name="Organization" return-type="Collection"> -->
+<!-- 			<finder-column name="organizationId" /> -->
+<!-- 		</finder> -->
+		
+		
+		<finder name="imeiAndOrganization" return-type="Collection" >
+			<finder-column name="imei" comparator="LIKE"/>
+			<finder-column name="organizationId"  />
+			
+		</finder>
+		
+		<finder name="organization" return-type="Collection" >
+			<finder-column name="organizationId"  />
+		</finder>
+	</entity>
+	
+	
+	
+	
+</service-builder>
